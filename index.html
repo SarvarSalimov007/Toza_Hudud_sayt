@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TozaHudud | Eko Coin</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <div>
+          <p class="badge">
+            <span class="logo-wrapper">
+              <span class="logo-text">TozaHudud</span>
+              <span class="logo-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <!-- Classic recycling symbol - Mobius strip with three arrows -->
+                  <!-- Arrow 1: Top right -->
+                  <path d="M12 2 L20 7 L20 12 L12 17" />
+                  <path d="M18 6 L20 7 L18 8" />
+                  <!-- Arrow 2: Bottom left -->
+                  <path d="M4 7 L4 12 L12 17 L12 22 L4 17" />
+                  <path d="M6 15 L4 17 L6 19" />
+                  <!-- Arrow 3: Bottom right -->
+                  <path d="M20 12 L20 17 L12 22 L12 17" />
+                  <path d="M18 19 L20 17 L18 15" />
+                </svg>
+              </span>
+            </span>
+            <span class="beta-text"> • Beta</span>
+          </p>
+          <h1>Chiqindini neon coinlarga aylantiring</h1>
+          <p class="lead">
+            Har kilogramm eko chiqindi uchun coin oling va TozaHudud claw
+            mashinasida o‘yinchoq yutib oling.
+          </p>
+          <div class="hero-actions">
+            <button class="primary" id="scrollToForm">Coin yig‘ish</button>
+            <button class="ghost" id="scrollToGame">Mini o‘yin</button>
+            <button class="ghost" id="scrollToChest">Sandiqcha</button>
+          </div>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <span class="label">Bugun yig‘ilgan</span>
+            <strong id="dailyKgs">0 kg</strong>
+          </div>
+          <div>
+            <span class="label">Coin bank</span>
+            <strong id="coinBank">0</strong>
+          </div>
+        </div>
+        <button class="toggle" id="themeToggle" aria-label="Theme toggle">
+          <span>Dark</span>
+          <span>Light</span>
+        </button>
+      </header>
+
+      <main>
+        <section class="card" id="formCard">
+          <h2>Coin yig‘ish</h2>
+          <p class="section-lead">
+            Ma’lumotlaringizni kiriting va chiqindini tasniflang. Har 1 kg uchun
+            1 coin olasiz (maksimal 1000).
+          </p>
+          <form id="recycleForm">
+            <div class="grid">
+              <label>
+                Ism
+                <input required name="firstName" type="text" />
+              </label>
+              <label>
+                Familiya
+                <input required name="lastName" type="text" />
+              </label>
+              <label>
+                Yosh
+                <input required name="age" type="number" min="5" max="120" />
+              </label>
+              <label>
+                Email
+                <input
+                  required
+                  name="email"
+                  type="email"
+                  placeholder="eco@example.com"
+                />
+              </label>
+            </div>
+
+            <fieldset>
+              <legend>Chiqindi turi</legend>
+              <div class="chips">
+                <label><input type="radio" name="type" value="Shisha" required />Shisha</label>
+                <label><input type="radio" name="type" value="Plastmassa" />Plastmassa</label>
+                <label><input type="radio" name="type" value="Alyuminiy" />Alyumin</label>
+                <label><input type="radio" name="type" value="Aralash" />Aralash</label>
+                <label><input type="radio" name="type" value="Eko Premium" />Ekologik</label>
+              </div>
+            </fieldset>
+
+            <label class="range-label">
+              Chiqindining eko darajasi
+              <input type="range" name="ecoLevel" min="1" max="5" value="3" />
+              <span id="ecoLevelValue">3 / 5</span>
+            </label>
+
+            <label>
+              Og‘irlik (kg)
+              <input
+                required
+                name="weight"
+                type="number"
+                min="1"
+                max="1000"
+                placeholder="Masalan 25"
+                id="weightInput"
+              />
+            </label>
+
+            <label id="photoLabel" style="display: none;" class="photo-label">
+              Chiqindining rasmi (30 kg dan ko'p bo'lsa majburiy)
+              <input
+                type="file"
+                name="photo"
+                id="photoInput"
+                accept="image/*"
+                capture="environment"
+              />
+              <small class="photo-hint">Tekshirish uchun chiqindining rasmini yuklang</small>
+              <div id="photoPreview" class="photo-preview"></div>
+            </label>
+
+            <button class="primary full" type="submit">Coin hisoblash</button>
+          </form>
+          <div class="result" id="formResult"></div>
+        </section>
+
+        <section class="card" id="gameCard">
+          <div class="card-header">
+            <div>
+              <h2>Claw Machine mini o'yin</h2>
+              <p class="section-lead">
+                20 coin sarflang va kolleksiya o'yinchoqlaridan birini qo'lga
+                kiriting. Tilla chayon uchun omad 0.001%!
+              </p>
+            </div>
+            <div class="price-tag">20 coin</div>
+          </div>
+          <div class="game-content">
+            <div class="game-left">
+              <div class="result" id="gameResult">
+                <div class="claw-machine-container">
+                  <div class="claw-machine" id="clawMachine">
+                    <div class="claw-machine-glass">
+                      <div class="toys-pool" id="toysPool"></div>
+                      <div class="claw-chain" id="clawChain"></div>
+                      <div class="claw" id="claw">
+                        <div class="claw-arm left"></div>
+                        <div class="claw-arm right"></div>
+                        <div class="claw-arm center"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="primary full" id="playGame">Claw mashinani ishga tushur</button>
+              <div class="toys-grid" id="toyList"></div>
+            </div>
+            <div class="game-right">
+              <!-- O'ng taraf bo'sh qoldirildi -->
+            </div>
+          </div>
+        </section>
+        <section class="card chest" id="chestCard">
+          <div class="card-header">
+            <div>
+              <h2>Yutuqlar sandig‘i</h2>
+              <p class="section-lead">
+                Claw mashinasidan tushgan o‘yinchoqlar shu yerda saqlanadi.
+                Har biri o‘zining neon rasmini oladi.
+              </p>
+            </div>
+            <div class="chest-icon" aria-hidden="true">
+              <span class="lid"></span>
+              <span class="box"></span>
+            </div>
+          </div>
+          <div class="chest-actions" id="chestActions" style="display: none;">
+            <button class="ghost" id="selectAllBtn">Barchasini tanlash</button>
+            <button class="ghost danger" id="deleteSelectedBtn">Tanlanganlarni o'chirish</button>
+          </div>
+          <p class="empty" id="emptyChestMsg">Hali o‘yinchoqlar yo‘q. Clawni ishga tushiring!</p>
+          <div class="chest-grid" id="inventoryList" aria-live="polite"></div>
+        </section>
+
+        <section class="card neon">
+          <h2>Coinlar yetmayaptimi?</h2>
+          <p>
+            Coinlar yetarli bo‘lmasa, ko‘proq chiqindi tashlang yoki
+            qo‘shnilarni ham jalb qiling. Har kilogramm — bu kelajakdagi neon
+            shahar!
+          </p>
+        </section>
+      </main>
+
+      <footer>
+        <p>© 2025 TozaHudud. Faqat pozitiv energiya va neon vibelar.</p>
+        <button class="toggle" id="settingsToggle" aria-label="AI Settings" title="AI sozlamalari">
+          AI
+        </button>
+      </footer>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="modal" style="display: none;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>AI API Sozlamalari</h3>
+          <button class="modal-close" id="closeSettings">×</button>
+        </div>
+        <div class="modal-body">
+          <div class="settings-section">
+            <p class="section-lead">
+              Haqiqiy AI tekshiruv uchun OpenAI API key kiriting. Key bo'lmasa, demo versiya ishlatiladi.
+            </p>
+            <label>
+              OpenAI API Key
+              <input
+                type="password"
+                id="apiKeyInput"
+                placeholder="sk-..."
+              />
+              <small class="photo-hint">
+                API key faqat brauzeringizda saqlanadi va boshqa hech kimga yuborilmaydi.
+              </small>
+            </label>
+            <div class="modal-actions">
+              <button class="primary" id="saveApiKey">Saqlash</button>
+              <button class="ghost" id="clearApiKey">Tozalash</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
