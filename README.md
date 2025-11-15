@@ -19,7 +19,7 @@ TozaHudud - bu chiqindilarni virtual coinlarga aylantiradigan interaktiv ekologi
 ### 🎰 Claw Mashina O'yini
 - **Narxi:** 20 coin
 - **Kolleksiya o'yinchoqlari:**
-  - 🦂 **Tilla chayon** (0.001% omad) - Legendary
+  - 🦂 **Tilla chayon** (0.001% omad) - Mithick
   - 🐼 **Eko panda** (1% omad) - Legendary
   - 🐢 **Lazer toshbaqa** (9% omad) - Rare
   - 🐰 **Neon quyon** (15% omad) - Uncommon
@@ -199,4 +199,5 @@ TozaHudud jamoasi
 ---
 
 **Eslatma:** Bu loyiha ekologik xabardorlikni oshirish va qayta ishlashni rag'batlantirish uchun yaratilgan. Haqiqiy chiqindilarni to'g'ri joyga tashlang! 🌱
+
 
